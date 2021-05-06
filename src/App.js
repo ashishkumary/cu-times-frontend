@@ -53,11 +53,7 @@ function App() {
                                     <ul className='dropdown-content'>
                                         <li><Link to='#' onClick={signoutHandler}>Sign Out</Link></li>
                                         <li><Link to='/userprofile'>Profile</Link></li>
-<<<<<<< HEAD
-                                        <li><Link to={`/favourate`}>Favourates({userInfo && userInfo.favourites.length})</Link></li>
-=======
                                         <li><Link to={`/favourate`}>Favourites({userInfo && userInfo.favourites.length})</Link></li>
->>>>>>> a8777dbad3970eccf387faaedc0028667d10f00c
                                     </ul>
                                 </div>
                                 :
