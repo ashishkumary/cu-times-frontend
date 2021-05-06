@@ -44,7 +44,7 @@ export default function AddNewsScreen(props) {
         bodyFormData.append('image', file)
         setLoadingUpload(true)
         try {
-            const { data } = await axios.post('/api/uploads/s3', bodyFormData, {
+            const { data } = await axios.post('https://cu-times.herokuapp.com/api/uploads/s3', bodyFormData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

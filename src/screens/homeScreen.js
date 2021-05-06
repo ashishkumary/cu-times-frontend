@@ -35,7 +35,7 @@ export default function HomeScreen(props) {
                                 <CarouselComponent history={props.history} data={news}></CarouselComponent>
                             </div>
                             <div className='developers-section'>
-                                <h2>Our Team</h2>
+                                <h2>Our Teams</h2>
                                 <div className='inner'>
                                     <div className='developer'>
                                         <img width='80px' height='80px' src="./images/ashish.jpg"></img>

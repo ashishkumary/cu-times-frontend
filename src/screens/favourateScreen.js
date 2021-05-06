@@ -23,7 +23,7 @@ export default function FavourateScreen(props) {
                     loading ? 'Loading...'
                         :
                         <div className='main-container'>
-                            <h2>Favourates</h2>
+                            <h2>Favourites</h2>
                             <div className='inner-container'>
                                 {
                                     favourites && favourites.map((item) => (

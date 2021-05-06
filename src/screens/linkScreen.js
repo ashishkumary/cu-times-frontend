@@ -29,7 +29,7 @@ export default function LinkScreen(props) {
             case "culture":
                 return "Culture"
             case "events":
-                return "Culture"
+                return "Events"
             default:
                 return ''
         }

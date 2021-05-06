@@ -6,7 +6,7 @@ export const signin = (item) => async (dispatch) => {
     console.log('item', item)
     dispatch({ type: USER_SIGNIN_REQUEST })
     try {
-        const { data } = await Axios.post('/api/users/signin', item)
+        const { data } = await Axios.post('https://cu-times.herokuapp.com/api/users/signin', item)
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })
         localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
@@ -22,7 +22,7 @@ export const signin = (item) => async (dispatch) => {
 export const signup = (item) => async (dispatch) => {
     dispatch({ type: USER_SIGNUP_REQUEST })
     try {
-        const { data } = await Axios.post('/api/users/signup', item)
+        const { data } = await Axios.post('https://cu-times.herokuapp.com/api/users/signup', item)
         dispatch({ type: USER_SIGNUP_SUCCESS, payload: data })
     } catch (error) {
         dispatch({
@@ -42,7 +42,7 @@ export const profileEdit = (profileId, item) => async (dispatch, getState) => {
     dispatch({ type: USER_EDIT_REQUEST })
     const { userSignin: { userInfo } } = getState()
     try {
-        const { data } = await Axios.put(`/api/users/profile/${profileId}`, item, {
+        const { data } = await Axios.put(`https://cu-times.herokuapp.com/api/users/profile/${profileId}`, item, {
             headers: { Authorization: `Bearer ${userInfo.token}` }
         })
         dispatch({ type: USER_EDIT_SUCCESS, payload: data })
@@ -61,7 +61,7 @@ export const adminProfileEdit = (profileId, item) => async (dispatch, getState) 
     dispatch({ type: ADMIN_USER_EDIT_REQUEST })
     const { userSignin: { userInfo } } = getState()
     try {
-        const { data } = await Axios.put(`/api/users/user/${profileId}`, item, {
+        const { data } = await Axios.put(`https://cu-times.herokuapp.com/api/users/user/${profileId}`, item, {
             headers: { Authorization: `Bearer ${userInfo.token}` }
         })
         dispatch({ type: ADMIN_USER_EDIT_SUCCESS, payload: data })
@@ -77,7 +77,7 @@ export const usersList = () => async (dispatch, getState) => {
     dispatch({ type: USER_LIST_REQUEST })
     const { userSignin: { userInfo } } = getState()
     try {
-        const { data } = await Axios.get('/api/users', {
+        const { data } = await Axios.get('https://cu-times.herokuapp.com/api/users', {
             headers: { Authorization: `Bearer ${userInfo.token}` }
         })
         dispatch({ type: USER_LIST_SUCCESS, payload: data })
@@ -93,7 +93,7 @@ export const userDetails = (userId) => async (dispatch, getState) => {
     dispatch({ type: USER_DETAILS_REQUEST })
     const { userSignin: { userInfo } } = getState()
     try {
-        const { data } = await Axios.get(`/api/users/${userId}`, {
+        const { data } = await Axios.get(`https://cu-times.herokuapp.com/api/users/${userId}`, {
             headers: { Authorization: `Bearer ${userInfo.token}` }
         })
         dispatch({ type: USER_DETAILS_SUCCESS, payload: data })
@@ -110,7 +110,7 @@ export const userDelete = (userId) => async (dispatch, getState) => {
     const { userSignin: { userInfo } } = getState()
     console.log('userId', userId)
     try {
-        const { data } = await Axios.delete(`/api/users/delete/${userId}`, {
+        const { data } = await Axios.delete(`https://cu-times.herokuapp.com/api/users/delete/${userId}`, {
             headers: { Authorization: `Bearer ${userInfo.token}` }
         })
         dispatch({ type: USER_DELETE_SUCCESS, payload: data })

@@ -70,7 +70,7 @@ export default function NewsScreen(props) {
                                 <span className='category'>category: {category}</span>
                             </div>
                             <div className='news-banner-section'>
-                                <img src={image} width='100%' height='300px'></img>
+                                <img src={image} width='100%' height='450px'></img>
                             </div>
                             <div className='news-description-section'>
                                 <p dangerouslySetInnerHTML={{ __html: description }}></p>
