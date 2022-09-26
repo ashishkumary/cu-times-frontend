@@ -1,4 +1,4 @@
-import { NEWS_LIST_REQUEST, NEWS_LIST_SUCCESS, NEWS_LIST_FAIL, NEWS_DETAILS_REQUEST, NEWS_DETAILS_SUCCESS, NEWS_DETAILS_FAIL, NEWS_ADD_REQUEST, NEWS_ADD_SUCCESS, NEWS_ADD_FAIL, NEWS_DELETE_REQUEST, NEWS_DELETE_SUCCESS, NEWS_DELETE_FAIL, NEWS_ADD_RESET } from "../constants/newsConstant";
+import { NEWS_LIST_REQUEST, NEWS_LIST_SUCCESS, NEWS_LIST_FAIL, NEWS_DETAILS_REQUEST, NEWS_DETAILS_SUCCESS, NEWS_DETAILS_FAIL, NEWS_ADD_REQUEST, NEWS_ADD_SUCCESS, NEWS_ADD_FAIL, NEWS_DELETE_REQUEST, NEWS_DELETE_SUCCESS, NEWS_DELETE_FAIL, NEWS_ADD_RESET,NEWS_EDIT_REQUEST,NEWS_EDIT_SUCCESS,NEWS_EDIT_FAIL} from "../constants/newsConstant";
 
 
 export const newsListReducers = (state = {}, action) => {
@@ -49,6 +49,19 @@ export const newsDeleteReducer = (state = {}, action) => {
         case NEWS_DELETE_SUCCESS:
             return { loading: false, success: true, message: action.payload.message }
         case NEWS_DELETE_FAIL:
+            return { loading: false, error: action.payload }
+        default:
+            return state
+    }
+}
+
+export const newsEditReducer = (state = {}, action) => {
+    switch (action.type) {
+        case NEWS_EDIT_REQUEST:
+            return { loading: true }
+        case NEWS_EDIT_SUCCESS:
+            return { loading: false, updatedNews: action.payload }
+        case NEWS_EDIT_FAIL:
             return { loading: false, error: action.payload }
         default:
             return state

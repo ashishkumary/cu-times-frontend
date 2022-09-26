@@ -47,7 +47,7 @@ export default function Card(props) {
                     // <div className='fav-container fav-container'>
                     <div className='card-container fav-container'>
                         <div className='image'>
-                            <img height='72px' width='100%' src={newsImage}></img>
+                            <img height='35%' width='100%' src={newsImage}></img>
                         </div>
                         <div className='heading'>
                             <h3>{newsheading}</h3>
@@ -63,7 +63,7 @@ export default function Card(props) {
                     :
                     <div className={`card-container ${props.width}`}>
                         <div className='image'>
-                            <img height='72px' width='100%' src={image}></img>
+                            <img height='35%' width='100%' src={image}></img>
                         </div>
                         <div className='heading'>
                             <h3>{heading}</h3>

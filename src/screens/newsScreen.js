@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { newsDetails } from '../actions/newsAction'
+import { newsDetails,updateNews } from '../actions/newsAction'
 import { profileEdit } from '../actions/userAction'
 import Footer from '../components/footer'
 
@@ -9,17 +9,22 @@ export default function NewsScreen(props) {
     const productId = props.match.params.id
     const newsData = useSelector((state) => state.newsData)
     const { error, loading, newsDetail = {} } = newsData
-    const { author, createdAt, description, heading, image, category } = newsDetail || {}
+    const { author, createdAt, description, heading, image, category,comments = [] } = newsDetail || {}
 
     const userSignin = useSelector((state) => state.userSignin)
     const { userInfo } = userSignin || {}
-    const { _id = '', favourites } = userInfo || {}
+    const { _id = '', favourites, name } = userInfo || {}
+
+    const newsUpdate = useSelector((state) => state.newsUpdate)
+    console.log('newsUpdate', newsUpdate)
 
     const editProfile = ((state) => state.editProfile)
     // console.log('editProfile', editProfile)
 
-    const dispatch = useDispatch()
+    const [comment, setComment] = useState('')
 
+    const dispatch = useDispatch()
+    
     useEffect(() => {
         dispatch(newsDetails(productId))
     }, [favourites])
@@ -44,6 +49,21 @@ export default function NewsScreen(props) {
         }
 
     }
+
+
+
+    const postHandler = (e) => {
+        // const body = {
+        //     comments: [...comments, { comment, user: name }],
+        // }
+        const body = {
+            comment,
+            user: name
+        }
+        comments.push(body)
+        dispatch(updateNews(productId, { comments }))
+    }
+
 
     return (
         <>
@@ -74,6 +94,10 @@ export default function NewsScreen(props) {
                             </div>
                             <div className='news-description-section'>
                                 <p dangerouslySetInnerHTML={{ __html: description }}></p>
+                            </div>
+                            <div>
+                                <textarea placeholder='Add Comment' value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+                                <button className='primary' onClick={(e) => postHandler(e)}>Post</button>
                             </div>
                         </div >
             }

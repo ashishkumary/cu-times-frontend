@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import data from './data'
 import thunk from 'redux-thunk'
-import { newsListReducers, newsDetailsReducer, addNewsReducer, newsDeleteReducer } from './reducers/newsReducers'
+import { newsListReducers, newsDetailsReducer, addNewsReducer,newsEditReducer, newsDeleteReducer } from './reducers/newsReducers'
 import { userSigninReducer, userSignupReducer, userEditReducer, userListReducer, userDetailsReducer, adminUserEditReducer, userDeleteReducer } from './reducers/userReducers'
 
 
@@ -22,7 +22,8 @@ const reducer = combineReducers({
     detailsUser: userDetailsReducer,
     adminUserEdit: adminUserEditReducer,
     deleteUser: userDeleteReducer,
-    deleteNews: newsDeleteReducer
+    deleteNews: newsDeleteReducer,
+    newsUpdate: newsEditReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

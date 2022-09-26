@@ -46,10 +46,6 @@ export default function HomeScreen(props) {
                                         <p>I am Niharika currently pursuing BTECH (computer science) from chandigarh university in 3rd year.</p>
                                     </div>
                                     <div className='developer'>
-                                        <img width='80px' height='80px' src='./images/nitin.jpeg'></img>
-                                        <p>I am Nitin Katiyar currently pursuing BTECH (computer science) from chandigarh university in 3rd year.</p>
-                                    </div>
-                                    <div className='developer'>
                                         <img width='80px' height='80px' src='./images/chandana.jpg'></img>
                                         <p>I am Chandana , social media manager at oureducation and working at instituterank.com My website - blog.oureducation.in</p>
                                     </div>
